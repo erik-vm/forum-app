@@ -1,6 +1,7 @@
 package forum.app.server.controller;
 
 import forum.app.server.exception.ThreadNotFoundException;
+import forum.app.server.exception.ThreadTitleExistsException;
 import forum.app.server.model.Thread;
 import forum.app.server.service.ThreadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class ThreadController {
     private ThreadService threadService;
 
     @PutMapping("/")
-    Thread saveThread(Thread thread){
+    Thread saveThread(Thread thread) throws ThreadNotFoundException, ThreadTitleExistsException {
         return threadService.saveThread(thread);
     }
 

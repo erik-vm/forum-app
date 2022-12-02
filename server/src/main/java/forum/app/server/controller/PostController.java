@@ -1,5 +1,6 @@
 package forum.app.server.controller;
 
+import forum.app.server.exception.PostContainsBannedWordsException;
 import forum.app.server.exception.PostNotFoundException;
 import forum.app.server.model.Post;
 import forum.app.server.model.Thread;
@@ -17,7 +18,7 @@ public class PostController {
     private PostService postService;
 
     @PutMapping("/")
-    Post savePost(@RequestBody Post post){
+    Post savePost(@RequestBody Post post) throws PostContainsBannedWordsException {
         return postService.savePost(post);
     }
 

@@ -1,5 +1,6 @@
 package forum.app.server.service.implementation;
 
+import forum.app.server.exception.PostContainsBannedWordsException;
 import forum.app.server.exception.PostNotFoundException;
 import forum.app.server.model.Post;
 import forum.app.server.model.Thread;
@@ -18,7 +19,8 @@ public class PostServiceImp implements PostService {
     private PostRepository postRepository;
 
     @Override
-    public Post savePost(Post post) {
+    public Post savePost(Post post) throws PostContainsBannedWordsException {
+        bannedWordChecker(post.getBody());
         return postRepository.save(post);
     }
 
@@ -37,5 +39,15 @@ public class PostServiceImp implements PostService {
             throw new PostNotFoundException(thread.getId());
         }
         return postRepository.findAllByThread(thread);
+    }
+
+    private void bannedWordChecker(String body) throws PostContainsBannedWordsException {
+        String[] bannedWords = {"shit", "fuck", "cunt", "dick"};
+
+        for (int i = 0; i < bannedWords.length; i++){
+            if (body.toLowerCase().contains(bannedWords[i])){
+                throw new PostContainsBannedWordsException();
+            }
+        }
     }
 }

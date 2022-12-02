@@ -1,6 +1,7 @@
 package forum.app.server.service.implementation;
 
 import forum.app.server.exception.ThreadNotFoundException;
+import forum.app.server.exception.ThreadTitleExistsException;
 import forum.app.server.model.Thread;
 import forum.app.server.repository.ThreadRepository;
 import forum.app.server.service.ThreadService;
@@ -16,7 +17,8 @@ public class ThreadServiceImp implements ThreadService {
     @Autowired
     private ThreadRepository threadRepository;
     @Override
-    public Thread saveThread(Thread thread) {
+    public Thread saveThread(Thread thread) throws ThreadNotFoundException, ThreadTitleExistsException {
+        doesTitleExist(thread.getTitle());
         return threadRepository.save(thread);
     }
 
@@ -44,5 +46,13 @@ public class ThreadServiceImp implements ThreadService {
             throw new ThreadNotFoundException();
         }
         return threadRepository.findAll();
+    }
+
+    private void doesTitleExist(String tile) throws ThreadNotFoundException, ThreadTitleExistsException {
+        for (Thread thread : findAllThreads()){
+            if (thread.getTitle().equals(tile)){
+                throw new ThreadTitleExistsException(tile);
+            }
+        }
     }
 }
