@@ -2,6 +2,7 @@ import './App.css';
 import ForumPage, {ThreadNames} from "./components/ForumPage"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Thread from "./components/Thread"
+import Post from "./components/Post"
 
 
 function App () {
@@ -14,6 +15,7 @@ function App () {
               <Route index element={<ForumPage />} />
               {ThreadNames.map(i =>(
               <Route path={i} element={<Thread props={i}/>} />))}
+              <Route path="Post" element={<Post/>} />
             </Route>
           </Routes>
     </BrowserRouter>
