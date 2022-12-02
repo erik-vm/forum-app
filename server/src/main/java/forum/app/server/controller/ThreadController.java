@@ -30,13 +30,4 @@ public class ThreadController {
     Thread findThreadById(@PathVariable("id") Integer id) throws ThreadNotFoundException {
         return threadService.findThreadById(id);
     }
-
-    ;
-
-    @PostMapping("/name:{title}")
-    Thread findThreadByTitle(@PathVariable("title") String title) throws ThreadNotFoundException {
-        return threadService.findThreadByTitle(title);
-    }
-
-    ;
 }
