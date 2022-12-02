@@ -1,13 +1,13 @@
-package com.example.thread;
+package forum.app.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ThreadApplication {
+public class ServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ThreadApplication.class, args);
+        SpringApplication.run(ServerApplication.class, args);
     }
 
 }
