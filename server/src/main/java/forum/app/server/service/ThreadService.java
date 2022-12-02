@@ -12,7 +12,5 @@ public interface ThreadService {
 
     Thread findThreadById(Integer id) throws ThreadNotFoundException;
 
-    Thread findThreadByTitle(String title) throws ThreadNotFoundException;
-
     List<Thread> findAllThreads() throws ThreadNotFoundException;
 }

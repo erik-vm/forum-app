@@ -27,34 +27,26 @@ public class ThreadServiceImp implements ThreadService {
     @Override
     public Thread findThreadById(Integer id) throws ThreadNotFoundException {
         Optional<Thread> threadOptional = threadRepository.findById(id);
-        if (threadOptional.isEmpty()){
+        if (threadOptional.isEmpty()) {
             throw new ThreadNotFoundException(id);
         }
         return threadOptional.get();
     }
 
     @Override
-    public Thread findThreadByTitle(String title) throws ThreadNotFoundException {
-        Optional<Thread> threadOptional = threadRepository.findByTitle(title);
-        if (threadOptional.isEmpty()){
-            throw new ThreadNotFoundException(title);
-        }
-        return threadOptional.get();
-    }
-
-    @Override
     public List<Thread> findAllThreads() throws ThreadNotFoundException {
-        if (threadRepository.findAll().isEmpty()){
+        if (threadRepository.findAll().isEmpty()) {
             throw new ThreadNotFoundException();
         }
         return threadRepository.findAll();
     }
 
     private void doesTitleExist(String tile) throws ThreadNotFoundException, ThreadTitleExistsException {
-        for (Thread thread : findAllThreads()){
-            if (thread.getTitle().equals(tile)){
+        for (Thread thread : findAllThreads()) {
+            if (thread.getTitle().equals(tile)) {
                 throw new ThreadTitleExistsException(tile);
             }
         }
     }
+
 }
