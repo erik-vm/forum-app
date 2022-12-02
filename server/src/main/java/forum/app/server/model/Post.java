@@ -2,11 +2,15 @@ package forum.app.server.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import static jakarta.persistence.EnumType.*;
 
 @Entity
 @Data
+@Setter
+@Getter
 public class Post {
 
     @Id
