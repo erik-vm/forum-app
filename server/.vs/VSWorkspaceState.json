@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\main",
+    "\\src\\main\\java",
+    "\\src\\main\\java\\forum",
+    "\\src\\main\\java\\forum\\app",
+    "\\src\\main\\java\\forum\\app\\server"
+  ],
+  "SelectedNode": "\\src\\main\\java\\forum\\app\\server\\ServerApplication.java",
+  "PreviewInSolutionExplorer": false
+}
