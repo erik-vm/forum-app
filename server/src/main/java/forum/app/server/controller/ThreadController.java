@@ -1,9 +1,12 @@
 package forum.app.server.controller;
 
+import forum.app.server.exception.ThreadNotFoundException;
+import forum.app.server.model.Thread;
 import forum.app.server.service.ThreadService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/thread")
@@ -11,4 +14,24 @@ public class ThreadController {
 
     @Autowired
     private ThreadService threadService;
+
+    @PutMapping("/")
+    Thread saveThread(Thread thread){
+        return threadService.saveThread(thread);
+    }
+
+    @PostMapping("/all")
+    List<Thread> findAllThreads() throws ThreadNotFoundException {
+        return threadService.findAllThreads();
+    }
+
+    @PostMapping("/id:{id}")
+    Thread findThreadById(@PathVariable("id") Integer id) throws ThreadNotFoundException{
+        return threadService.findThreadById(id);
+    };
+
+    @PostMapping("/name:{title}")
+    Thread findThreadByTitle(@PathVariable("title") String title) throws ThreadNotFoundException{
+        return threadService.findThreadByTitle(title);
+    };
 }
