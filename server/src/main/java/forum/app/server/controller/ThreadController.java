@@ -16,23 +16,27 @@ public class ThreadController {
     @Autowired
     private ThreadService threadService;
 
-    @PutMapping("/")
-    Thread saveThread(Thread thread) throws ThreadNotFoundException, ThreadTitleExistsException {
+    @PostMapping("/")
+    Thread saveThread(@RequestBody Thread thread) throws ThreadNotFoundException, ThreadTitleExistsException {
         return threadService.saveThread(thread);
     }
 
-    @PostMapping("/all")
+    @PutMapping("/all")
     List<Thread> findAllThreads() throws ThreadNotFoundException {
         return threadService.findAllThreads();
     }
 
-    @PostMapping("/id:{id}")
-    Thread findThreadById(@PathVariable("id") Integer id) throws ThreadNotFoundException{
+    @PutMapping("/id:{id}")
+    Thread findThreadById(@PathVariable("id") Integer id) throws ThreadNotFoundException {
         return threadService.findThreadById(id);
-    };
+    }
+
+    ;
 
     @PostMapping("/name:{title}")
-    Thread findThreadByTitle(@PathVariable("title") String title) throws ThreadNotFoundException{
+    Thread findThreadByTitle(@PathVariable("title") String title) throws ThreadNotFoundException {
         return threadService.findThreadByTitle(title);
-    };
+    }
+
+    ;
 }

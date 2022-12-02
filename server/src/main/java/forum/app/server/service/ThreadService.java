@@ -9,7 +9,10 @@ import java.util.List;
 public interface ThreadService {
 
     Thread saveThread(Thread thread) throws ThreadNotFoundException, ThreadTitleExistsException;
+
     Thread findThreadById(Integer id) throws ThreadNotFoundException;
+
     Thread findThreadByTitle(String title) throws ThreadNotFoundException;
+
     List<Thread> findAllThreads() throws ThreadNotFoundException;
 }

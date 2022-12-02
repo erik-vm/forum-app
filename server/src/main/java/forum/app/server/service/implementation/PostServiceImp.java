@@ -34,6 +34,15 @@ public class PostServiceImp implements PostService {
     }
 
     @Override
+    public List<Post> findAll() throws PostNotFoundException {
+        if (postRepository.findAll().isEmpty()){
+            throw new PostNotFoundException();
+        }
+        return postRepository.findAll();
+    }
+
+
+    @Override
     public List<Post> findAllByThread(Thread thread) throws PostNotFoundException {
         if (postRepository.findAllByThread(thread).isEmpty()){
             throw new PostNotFoundException(thread.getId());

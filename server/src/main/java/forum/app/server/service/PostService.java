@@ -12,5 +12,7 @@ public interface PostService {
     Post savePost(Post post) throws PostContainsBannedWordsException;
     Post findPostById(Integer id) throws PostNotFoundException;
 
+    List<Post> findAll() throws PostNotFoundException;
+
     List<Post> findAllByThread(Thread thread) throws PostNotFoundException;
 }

@@ -17,17 +17,22 @@ public class PostController {
     @Autowired
     private PostService postService;
 
-    @PutMapping("/")
+    @PostMapping("/")
     Post savePost(@RequestBody Post post) throws PostContainsBannedWordsException {
         return postService.savePost(post);
     }
 
-    @PostMapping
+    @PutMapping("/thread")
     List<Post> findPostByThread(@RequestBody Thread thread) throws PostNotFoundException {
         return postService.findAllByThread(thread);
     }
 
-    @PostMapping("/id:{id}")
+    @PutMapping("/all")
+    List<Post> findAllPosts() throws PostNotFoundException {
+        return postService.findAll();
+    }
+
+    @PutMapping("/id:{id}")
     Post findPostById(@PathVariable("id") Integer id) throws PostNotFoundException{
         return postService.findPostById(id);
     };
