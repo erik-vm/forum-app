@@ -18,7 +18,6 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function SubmitButtons({props}) {
   const navigate = useNavigate();
     const handleSubmit = () => {
-        //let toGO = "/" + props;
         navigate("/" + props);
     };
   return (

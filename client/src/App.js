@@ -13,7 +13,7 @@ function App () {
             <Route path="/" >
               <Route index element={<ForumPage />} />
               {ThreadNames.map(i =>(
-              <Route path={i} element={<Thread />} />))}
+              <Route path={i} element={<Thread props={i}/>} />))}
             </Route>
           </Routes>
     </BrowserRouter>
