@@ -6,6 +6,7 @@ import { Container } from '@mui/system';
 import {useNavigate} from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Link from "./ThreadLink";
+import Post from "./Post"
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
