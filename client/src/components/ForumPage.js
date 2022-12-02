@@ -6,6 +6,7 @@ import { Container } from '@mui/system';
 import {useNavigate} from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Link from "./ThreadLink";
+import agent from "../posts";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -14,11 +15,16 @@ const Item = styled(Paper)(({ theme }) => ({
     textAlign: 'left',
     color: theme.palette.text.secondary,
   }));
+/*
+const fetchThreads = async () =>{
 
+  const respose = await apiThread.get("/thread");
+}
+*/
 
 const  ThreadNames= ["Off-topic", "The Well", "Questions", "Hardcore Section"]
 
-
+//const  ThreadNames= agent.account.getAll;
 
 export default function ForumPage(){
     const navigate = useNavigate();
@@ -38,23 +44,6 @@ export default function ForumPage(){
         </Container>
 
     );
-
 }
 
 export {ThreadNames};
-
-/*
-import Button from '@mui/material/Button';
-import {useNavigate} from 'react-router-dom';
-
-export default function SubmitButtons({handle}) {
-  const navigate = useNavigate();
-    const handleSubmit = () => {
-        navigate(handle);
-    };
-  return (
-      <Button variant="contained" component="label" onClick={handleSubmit} type="submit">
-        Submit
-      </Button>
-  );
-*/
